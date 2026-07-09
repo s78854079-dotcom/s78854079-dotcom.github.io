@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>إضافة منتج - سوق العربية</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+<h1>🛒 إضافة منتج جديد</h1>
+<a href="index.html">الرئيسية</a>
+</header>
+
+
+<main>
+
+<div class="card">
+
+<h2>أضف إعلانك</h2>
+
+<input 
+type="text" 
+id="name" 
+placeholder="اسم المنتج">
+
+
+<input 
+type="number" 
+id="price" 
+placeholder="السعر بعملة Pi">
+
+
+<textarea 
+id="description" 
+placeholder="وصف المنتج"></textarea>
+
+
+<input 
+type="file" 
+id="image"
+accept="image/*">
+
+
+<button onclick="addProduct()">
+نشر الإعلان
+</button>
+
+
+</div>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
