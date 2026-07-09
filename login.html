@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل الدخول - سوق العربية</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:#fff;
+max-width:400px;
+margin:auto;
+padding:25px;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,0,0,.15);
+}
+
+input{
+width:90%;
+padding:12px;
+font-size:18px;
+margin:15px 0;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+button{
+width:95%;
+padding:12px;
+font-size:18px;
+background:#6c63ff;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#5148d6;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>👤 تسجيل الدخول</h2>
+
+<p>اكتب اسمك للدخول إلى سوق العربية</p>
+
+<input
+type="text"
+id="username"
+placeholder="اسم المستخدم">
+
+<button onclick="login()">
+دخول
+</button>
+
+</div>
+
+<script>
+
+function login(){
+
+let username=document.getElementById("username").value.trim();
+
+if(username==""){
+
+alert("يرجى كتابة اسم المستخدم");
+
+return;
+
+}
+
+localStorage.setItem("username",username);
+
+alert("مرحباً "+username);
+
+window.location.href="index.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
