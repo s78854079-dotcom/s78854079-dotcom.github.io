@@ -161,5 +161,3 @@ function loginPi(){
             alert("خطأ: " + error);
         }
     );
-
-}console.log("script.js يعمل");
