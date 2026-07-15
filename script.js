@@ -150,4 +150,16 @@ function loginPi(){
         }
     );
 
+}function loginPi(){
+
+    Pi.authenticate(
+        ["username"],
+        function(auth){
+            alert("تم تسجيل الدخول: " + auth.user.username);
+        },
+        function(error){
+            alert("خطأ: " + error);
+        }
+    );
+
 }
