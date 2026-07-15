@@ -104,7 +104,7 @@ if(productsBox){
 
 
 
-function loginWithPi(){
+window.loginWithPi = function () {
 
     Pi.authenticate(
         ["username"],
