@@ -162,4 +162,4 @@ function loginPi(){
         }
     );
 
-}
+}console.log("script.js يعمل");
