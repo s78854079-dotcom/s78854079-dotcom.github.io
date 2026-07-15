@@ -31,7 +31,15 @@
     <button onclick="alert('Pi SDK: ' + typeof Pi); loginWithPi();">
       تسجيل الدخول بـ Pi
     </button>
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
 
+<script>
+Pi.init({
+    version: "2.0"
+}).then(() => {
+    document.body.innerHTML += "<p>Pi SDK جاهز</p>";
+});
+</script>
     <br><br>
 
     <a href="sell.html">
