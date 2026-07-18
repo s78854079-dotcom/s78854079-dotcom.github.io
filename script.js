@@ -1,25 +1,52 @@
+// تهيئة Pi SDK
 if (typeof Pi !== "undefined") {
     Pi.init({
         version: "2.0"
     });
 }
 
+// تسجيل الدخول بحساب Pi
+function loginWithPi() {
 
-function addProduct(){
+    Pi.authenticate(
+        ["username"],
+
+        function(auth) {
+
+            localStorage.setItem("username", auth.user.username);
+
+            alert("مرحباً " + auth.user.username);
+
+            document.getElementById("welcome").innerHTML =
+                "مرحباً بك يا " + auth.user.username;
+
+        },
+
+        function(error) {
+
+            console.log(error);
+            alert("فشل تسجيل الدخول إلى Pi");
+
+        }
+
+    );
+
+}
+
+// إضافة منتج
+function addProduct() {
 
     let name = document.getElementById("name").value;
     let price = document.getElementById("price").value;
     let description = document.getElementById("description").value;
     let imageInput = document.getElementById("image");
 
-
-    if(name === "" || price === "" || description === ""){
+    if (name === "" || price === "" || description === "") {
         alert("أكمل بيانات المنتج");
         return;
     }
 
-
-    let saveProduct = (image)=>{
+    let saveProduct = (image) => {
 
         let product = {
             name: name,
@@ -29,29 +56,22 @@ function addProduct(){
             seller: localStorage.getItem("username") || "مستخدم"
         };
 
-
         let products = JSON.parse(localStorage.getItem("products")) || [];
 
         products.push(product);
 
-        localStorage.setItem(
-            "products",
-            JSON.stringify(products)
-        );
-
+        localStorage.setItem("products", JSON.stringify(products));
 
         alert("تم نشر الإعلان بنجاح");
 
         window.location.href = "buy.html";
-
     };
 
-
-    if(imageInput && imageInput.files.length > 0){
+    if (imageInput && imageInput.files.length > 0) {
 
         let reader = new FileReader();
 
-        reader.onload = function(e){
+        reader.onload = function(e) {
             saveProduct(e.target.result);
         };
 
@@ -62,118 +82,28 @@ function addProduct(){
         saveProduct("");
 
     }
-
 }
 
-
-
-
+// عرض المنتجات
 let productsBox = document.getElementById("products");
 
-
-if(productsBox){
+if (productsBox) {
 
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
-
-    products.forEach(product=>{
+    products.forEach(product => {
 
         productsBox.innerHTML += `
-
-        <div class="product">
-
-        ${product.image ? "<img src='"+product.image+"'>" : ""}
-
-        <h3>${product.name}</h3>
-
-        <p>السعر: ${product.price} Pi</p>
-
-        <p>${product.description}</p>
-
-        <p>البائع: ${product.seller}</p>
-
-        </div>
-
+            <div class="product">
+                ${product.image ? `<img src="${product.image}" style="max-width:200px;">` : ""}
+                <h3>${product.name}</h3>
+                <p>السعر: ${product.price} Pi</p>
+                <p>${product.description}</p>
+                <p>البائع: ${product.seller}</p>
+            </div>
+            <hr>
         `;
 
     });
 
-}
-
-
-
-
-
-window.loginWithPi = function () {
-
-    Pi.authenticate(
-        ["username"],
-
-        function(auth){
-
-            localStorage.setItem(
-                "pi_username",
-                auth.user.username
-            );
-
-
-            alert(
-                 auth.user.username
-            );
-
-
-            window.location.href = "index.html";
-
-        },
-
-
-        function(error){
-
-            alert("فشل تسجيل الدخول إلى Pi");
-
-            console.log(error);
-
         }
-
-    );
-
-}
-function loginPi(){
-
-    Pi.authenticate(
-        ["username"],
-        function(auth){
-            alert("تم تسجيل الدخول: " + auth.user.username);
-        },
-        function(error){
-            alert("خطأ: " + error);
-        }
-   
-
-
-
-window.loginWithPi = function () {
-
-    Pi.authenticate(
-        ["username"],
-
-        function(auth){
-
-            localStorage.setItem("username", auth.user.username);
-
-            alert("تم تسجيل الدخول: " + auth.user.username);
-
-            window.location.href = "index.html";
-
-        },
-
-        function(error){
-
-            alert("فشل تسجيل الدخول إلى Pi");
-            console.log(error);
-
-        }
-
-    );
-
-};
