@@ -150,15 +150,30 @@ function loginPi(){
         }
    
 
-}function loginPi(){
+
+
+window.loginWithPi = function () {
 
     Pi.authenticate(
         ["username"],
+
         function(auth){
+
+            localStorage.setItem("username", auth.user.username);
+
             alert("تم تسجيل الدخول: " + auth.user.username);
+
+            window.location.href = "index.html";
+
         },
+
         function(error){
-            alert("خطأ: " + error);
+
+            alert("فشل تسجيل الدخول إلى Pi");
+            console.log(error);
+
         }
+
     );
 
+};
