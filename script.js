@@ -106,4 +106,4 @@ if (productsBox) {
 
     });
 
-        }
+}
