@@ -1,71 +1,62 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوق العربية</title>
 
-  <title>سوق العربية</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 </head>
-<button onclick="loginPi()">تسجيل الدخول بـ Pi</button>
 <body>
 
 <header>
-  <h1>🛒 سوق العربية</h1>
-  <p>سوق عربي لبيع وشراء المنتجات باستخدام Pi</p>
+    <h1>🛒 سوق العربية</h1>
+    <p>سوق عربي لبيع وشراء المنتجات باستخدام Pi</p>
 </header>
 
 <main>
-  <div class="card">
+    <div class="card">
 
-    <h2>مرحباً بك</h2>
+        <h2>مرحباً بك</h2>
 
-    <p id="welcome">
-      أهلاً بك في سوق العربية
-    </p>
-<button onclick="loginPi()">تسجيل الدخول بـ Pi</button>
-    <button onclick="alert('Pi SDK: ' + typeof Pi); loginWithPi();">
-      تسجيل الدخول بـ Pi
-    </button>
-<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+        <p id="welcome">أهلاً بك في سوق العربية</p>
 
-<script>
-Pi.init({
-    version: "2.0"
-}).then(() => {
-    document.body.innerHTML += "<p>Pi SDK جاهز</p>";
-});
-</script>
-    <br><br>
+        <button onclick="loginWithPi()">
+            تسجيل الدخول بـ Pi
+        </button>
 
-    <a href="sell.html">
-      <button>➕ بيع المنتجات</button>
-    </a>
+        <br><br>
 
-    <br><br>
+        <a href="sell.html">
+            <button>➕ بيع المنتجات</button>
+        </a>
 
-    <a href="buy.html">
-      <button>🛍️ شراء المنتجات</button>
-    </a>
+        <br><br>
 
-  </div>
+        <a href="buy.html">
+            <button>🛍️ شراء المنتجات</button>
+        </a>
+
+    </div>
 </main>
 
 <script>
+if (typeof Pi !== "undefined") {
+    Pi.init({
+        version: "2.0"
+    });
+}
+
 let username = localStorage.getItem("username");
 
 if (username) {
-  document.getElementById("welcome").innerHTML =
-    "مرحباً بك يا " + username;
+    document.getElementById("welcome").innerHTML =
+        "مرحباً بك يا " + username;
 }
 </script>
 
-<script type="module" src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-</html
-
+</html>
