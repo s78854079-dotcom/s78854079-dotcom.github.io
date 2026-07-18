@@ -118,7 +118,7 @@ window.loginWithPi = function () {
 
 
             alert(
-                "تم تسجيل الدخول بحساب Pi: " + auth.user.username
+                 auth.user.username
             );
 
 
